@@ -47,7 +47,7 @@
                 android:gravity="center"
                 android:textColor="@color/white"
                 android:textStyle="bold"
-                android:text="Kilogram"/>
+                android:text="Kilograms"/>
 
         </LinearLayout>
 
@@ -183,16 +183,25 @@
                 <TextView
                     android:layout_width="0px"
                     android:layout_height="wrap_content"
-                    android:layout_weight="15"
+                    android:layout_weight="25"
                     android:textColor="@color/blue"
                     android:textSize="28sp"
                     android:text="5% "/>
+
+                <LinearLayout
+                    android:layout_width="0px"
+                    android:layout_weight="1"
+                    android:background="@color/black"
+                    android:layout_marginRight="6dp"
+                    android:layout_height="match_parent">
+
+                </LinearLayout>
 
                 <TextView
                     android:id="@+id/tv5per"
                     android:layout_width="0px"
                     android:layout_height="wrap_content"
-                    android:layout_weight="40"
+                    android:layout_weight="80"
                     android:textColor="@color/blue"
                     android:textSize="28sp"
                     android:text="0.15 kilograms"/>
@@ -217,16 +226,25 @@
                 <TextView
                     android:layout_width="0px"
                     android:layout_height="wrap_content"
-                    android:layout_weight="15"
+                    android:layout_weight="25"
                     android:textColor="@color/blue"
                     android:textSize="28sp"
                     android:text="10% "/>
+
+                <LinearLayout
+                    android:layout_width="0px"
+                    android:layout_weight="1"
+                    android:background="@color/black"
+                    android:layout_marginRight="6dp"
+                    android:layout_height="match_parent">
+
+                </LinearLayout>
 
                 <TextView
                     android:id="@+id/tv10per"
                     android:layout_width="0px"
                     android:layout_height="wrap_content"
-                    android:layout_weight="40"
+                    android:layout_weight="80"
                     android:textColor="@color/blue"
                     android:textSize="28sp"
                     android:text="0.3 kilograms"/>
@@ -251,16 +269,25 @@
                 <TextView
                     android:layout_width="0px"
                     android:layout_height="wrap_content"
-                    android:layout_weight="15"
+                    android:layout_weight="25"
                     android:textColor="@color/blue"
                     android:textSize="28sp"
                     android:text="15% "/>
+
+                <LinearLayout
+                    android:layout_width="0px"
+                    android:layout_weight="1"
+                    android:background="@color/black"
+                    android:layout_marginRight="6dp"
+                    android:layout_height="match_parent">
+
+                </LinearLayout>
 
                 <TextView
                     android:id="@+id/tv15per"
                     android:layout_width="0px"
                     android:layout_height="wrap_content"
-                    android:layout_weight="40"
+                    android:layout_weight="80"
                     android:textColor="@color/blue"
                     android:textSize="28sp"
                     android:text="0.45 kilograms"/>

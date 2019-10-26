@@ -17,7 +17,7 @@ import java.text.DecimalFormat;
 public class AddWeight extends AppCompatActivity {
 
     int unit;
-    TextView kg,lbsoz,lbsdec,tvunit,tv5per,tv10per,tv15per;
+    TextView tvkg,tvlbsoz,tvlbsdec,tvunit,tv5per,tv10per,tv15per;
     Button insert;
     EditText wt;
 
@@ -56,9 +56,9 @@ public class AddWeight extends AppCompatActivity {
     }
 
     public void setLabels(){
-        kg.setText("--");
-        lbsoz.setText("--");
-        lbsdec.setText("--");
+        tvkg.setText("--");
+        tvlbsoz.setText("--");
+        tvlbsdec.setText("--");
 
         tv5per.setText("--");
         tv10per.setText("--");
@@ -79,9 +79,9 @@ public class AddWeight extends AppCompatActivity {
 
     public void initVals(){
 
-        kg = findViewById(R.id.tvkg);
-        lbsoz = findViewById(R.id.tvlbsoz);
-        lbsdec = findViewById(R.id.tvlbsdec);
+        tvkg = findViewById(R.id.tvkg);
+        tvlbsoz = findViewById(R.id.tvlbsoz);
+        tvlbsdec = findViewById(R.id.tvlbsdec);
         tvunit = findViewById(R.id.tvUnit);
         tv5per = findViewById(R.id.tv5per);
         tv10per = findViewById(R.id.tv10per);
@@ -90,17 +90,6 @@ public class AddWeight extends AppCompatActivity {
         insert = findViewById(R.id.bInsert);
 
         wt = findViewById(R.id.etWeight);
-
-        insert.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                int we = Integer.parseInt(wt.getText().toString());
-                if(we == 3) {
-                    kg.setText("" + wt.getText().toString());
-
-                }
-            }
-        });
 
         wt.addTextChangedListener(new TextWatcher() {
             @Override
@@ -111,6 +100,7 @@ public class AddWeight extends AppCompatActivity {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 getPercentage(s.toString());
+                convertToOthers(s.toString());
             }
 
             @Override
@@ -121,12 +111,43 @@ public class AddWeight extends AppCompatActivity {
 
     }
 
+    public void convertToOthers(String snum){
+        try {
+            double num = Double.parseDouble(snum);
+            DecimalFormat df = new DecimalFormat();
+            df.setMaximumFractionDigits(2);
+            switch(MODE){
+                case KG_MODE:
+                    tvkg.setText(""+df.format(num));
+                    double pounds = kgToPounds(num);
+                    PoundsOz p = lbsToOz(pounds);
+                    tvlbsoz.setText("" + p.getPounds() + ", " + df.format(p.getOunces()));
+                    tvlbsdec.setText(df.format(pounds));
+                    break;
+                case POOZ_MODE:
+//                    tv5per.setText(tv5per.getText() + " Lb/Oz");
+//                    tv10per.setText(tv10per.getText() + " Lb/Oz");
+//                    tv15per.setText(tv15per.getText() + " Lb/Oz");
+                    break;
+
+                case PODC_MODE:
+//                    tv5per.setText(tv5per.getText() + " Lb");
+//                    tv10per.setText(tv10per.getText() + " Lb");
+//                    tv15per.setText(tv15per.getText() + " Lb");
+                    break;
+            }
+
+        }catch (NumberFormatException ne){
+            Toast.makeText(this, "Please enter valid weight", Toast.LENGTH_SHORT).show();
+        }
+    }
+
     public void getPercentage(String snum){
         try {
-            float num = Float.parseFloat(snum);
-            float per5 = (num/100)*5;
-            float per10 = (num/100)*10;
-            float per15 = (num/100)*15;
+            double num = Double.parseDouble(snum);
+            double per5 = (num/100)*5;
+            double per10 = (num/100)*10;
+            double per15 = (num/100)*15;
             DecimalFormat df = new DecimalFormat();
             df.setMaximumFractionDigits(4);
             tv5per.setText("" + df.format(per5));
@@ -153,7 +174,9 @@ public class AddWeight extends AppCompatActivity {
             }
 
         }catch (NumberFormatException ne){
-            Toast.makeText(this, "Please enter valid weight", Toast.LENGTH_SHORT).show();
+            tvkg.setText("--");
+            tvlbsoz.setText("--");
+            tvlbsdec.setText("--");
         }
     }
 

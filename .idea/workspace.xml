@@ -63,25 +63,22 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/sanved/birthlossweightcalculator/AddWeight.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="572">
-              <caret line="53" column="36" selection-start-line="53" selection-start-column="36" selection-end-line="53" selection-end-column="36" />
+            <state relative-caret-position="435">
+              <caret line="133" column="21" selection-start-line="133" selection-start-column="21" selection-end-line="135" selection-end-column="65" />
               <folding>
                 <element signature="e#714#823#1" />
                 <element signature="e#828#895#1" />
-                <element signature="method#setLabels#0;class#AddWeight#0" />
                 <element signature="e#1533#2306#0" />
-                <element signature="method#initVals#0;class#AddWeight#0" />
-                <element signature="class#2856:3248" />
                 <element signature="method#beforeTextChanged#0;class#2856:3248" />
-                <element signature="method#onTextChanged#0;class#2856:3261" />
                 <element signature="method#afterTextChanged#0;class#2856:3248" />
-                <element signature="e#3821#3993#0" />
-                <element signature="e#3596#3672#0" />
-                <element signature="e#5122#5123#0" expanded="true" />
-                <element signature="e#5160#5161#0" expanded="true" />
+                <element signature="e#4211#4312#0" />
+                <element signature="method#kgToPounds#0;class#AddWeight#0" />
+                <element signature="method#kgToPounds#1;class#AddWeight#0" />
+                <element signature="method#lbsToOz#0;class#AddWeight#0" />
+                <element signature="class#PoundsOz#0;class#AddWeight#0" />
                 <element signature="e#5216#5217#0" expanded="true" />
                 <element signature="e#5253#5254#0" expanded="true" />
                 <element signature="e#5290#5291#0" expanded="true" />
@@ -91,12 +88,12 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/add_weight.xml">
-          <provider editor-type-id="android-designer2" />
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="86">
-              <caret line="133" column="35" selection-start-line="133" selection-start-column="35" selection-end-line="133" selection-end-column="35" />
+          <provider selected="true" editor-type-id="android-designer2" />
+          <provider editor-type-id="text-editor">
+            <state relative-caret-position="146">
+              <caret line="185" column="45" selection-start-line="185" selection-start-column="45" selection-end-line="185" selection-end-column="45" />
             </state>
           </provider>
         </entry>
@@ -129,8 +126,8 @@
         <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/styles.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/sanved/birthlossweightcalculator/AddWeightSelect.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/add_weight.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/sanved/birthlossweightcalculator/AddWeight.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/add_weight.xml" />
       </list>
     </option>
   </component>
@@ -273,7 +270,7 @@
       <window_info anchor="bottom" id="Event Log" order="3" side_tool="true" />
       <window_info anchor="bottom" id="Android Profiler" order="4" />
       <window_info anchor="bottom" id="Build" order="5" weight="0.3033586" />
-      <window_info anchor="bottom" id="Logcat" order="6" weight="0.329718" />
+      <window_info anchor="bottom" id="Logcat" order="6" weight="0.32936078" />
       <window_info anchor="bottom" id="Run" order="7" />
       <window_info anchor="bottom" id="Debug" order="8" weight="0.32936078" />
       <window_info anchor="right" id="Capture Analysis" order="0" />
@@ -289,31 +286,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/sanved/birthlossweightcalculator/AddWeight.java</url>
-          <line>173</line>
-          <properties />
-          <option name="timeStamp" value="10" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/com/sanved/birthlossweightcalculator/AddWeight.java</url>
-          <line>172</line>
-          <properties />
-          <option name="timeStamp" value="11" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/com/sanved/birthlossweightcalculator/AddWeight.java</url>
-          <line>170</line>
-          <properties />
-          <option name="timeStamp" value="12" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/com/sanved/birthlossweightcalculator/AddWeight.java</url>
-          <line>171</line>
-          <properties />
-          <option name="timeStamp" value="13" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/com/sanved/birthlossweightcalculator/AddWeight.java</url>
-          <line>124</line>
+          <line>145</line>
           <properties />
           <option name="timeStamp" value="14" />
         </line-breakpoint>
@@ -397,14 +370,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/add_weight.xml">
-      <provider editor-type-id="android-designer2" />
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="86">
-          <caret line="133" column="35" selection-start-line="133" selection-start-column="35" selection-end-line="133" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/sanved/birthlossweightcalculator/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -428,27 +393,32 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/sanved/birthlossweightcalculator/AddWeight.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="572">
-          <caret line="53" column="36" selection-start-line="53" selection-start-column="36" selection-end-line="53" selection-end-column="36" />
+        <state relative-caret-position="435">
+          <caret line="133" column="21" selection-start-line="133" selection-start-column="21" selection-end-line="135" selection-end-column="65" />
           <folding>
             <element signature="e#714#823#1" />
             <element signature="e#828#895#1" />
-            <element signature="method#setLabels#0;class#AddWeight#0" />
             <element signature="e#1533#2306#0" />
-            <element signature="method#initVals#0;class#AddWeight#0" />
-            <element signature="class#2856:3248" />
             <element signature="method#beforeTextChanged#0;class#2856:3248" />
-            <element signature="method#onTextChanged#0;class#2856:3261" />
             <element signature="method#afterTextChanged#0;class#2856:3248" />
-            <element signature="e#3821#3993#0" />
-            <element signature="e#3596#3672#0" />
-            <element signature="e#5122#5123#0" expanded="true" />
-            <element signature="e#5160#5161#0" expanded="true" />
+            <element signature="e#4211#4312#0" />
+            <element signature="method#kgToPounds#0;class#AddWeight#0" />
+            <element signature="method#kgToPounds#1;class#AddWeight#0" />
+            <element signature="method#lbsToOz#0;class#AddWeight#0" />
+            <element signature="class#PoundsOz#0;class#AddWeight#0" />
             <element signature="e#5216#5217#0" expanded="true" />
             <element signature="e#5253#5254#0" expanded="true" />
             <element signature="e#5290#5291#0" expanded="true" />
             <element signature="e#5327#5328#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/add_weight.xml">
+      <provider selected="true" editor-type-id="android-designer2" />
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="146">
+          <caret line="185" column="45" selection-start-line="185" selection-start-column="45" selection-end-line="185" selection-end-column="45" />
         </state>
       </provider>
     </entry>
