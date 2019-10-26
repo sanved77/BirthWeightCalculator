@@ -137,8 +137,9 @@
         <TextView
             android:id="@+id/tvUnit"
             android:layout_width="0px"
+            android:layout_marginRight="32px"
             android:layout_height="match_parent"
-            android:text="Kilograms"
+            android:text="lbs/oz"
             android:gravity="center"
             android:textSize="32sp"
             android:textColor="@color/white"

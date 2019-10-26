@@ -48,6 +48,14 @@ public class AddWeight extends AppCompatActivity {
 
         initVals();
 
+        setLabels();
+
+        PoundsOz p = lbsToOz(kgToPounds(3.294214589));
+        Toast.makeText(this, "lbs - " + lbsOzTolbsDec(p), Toast.LENGTH_SHORT).show();
+
+    }
+
+    public void setLabels(){
         kg.setText("--");
         lbsoz.setText("--");
         lbsdec.setText("--");
@@ -56,6 +64,17 @@ public class AddWeight extends AppCompatActivity {
         tv10per.setText("--");
         tv15per.setText("--");
 
+        switch(MODE){
+            case KG_MODE:
+                tvunit.setText("Kgs");
+                break;
+            case POOZ_MODE:
+                tvunit.setText("lbs & oz");
+                break;
+            case PODC_MODE:
+                tvunit.setText("lbs dec");
+                break;
+        }
     }
 
     public void initVals(){
@@ -79,28 +98,6 @@ public class AddWeight extends AppCompatActivity {
                 if(we == 3) {
                     kg.setText("" + wt.getText().toString());
 
-                    double pdec = kgToPounds(we);
-                    lbsdec.setText("" + pdec);
-
-                    int ozz = lbsToOz(pdec);
-                    int po = ozz % 16;
-                    int oz = ozz / 16;
-                    lbsoz.setText(po + "," + oz);
-
-                    double temp = we * 0.05;
-                    tv5per.setText("" + temp);
-                    temp = we * 0.10;
-                    tv10per.setText("" + temp);
-                    temp = we * 0.15;
-                    tv15per.setText("" + temp);
-
-                    /*kg.setText("3");
-                    lbsoz.setText("6, 9.8");
-                    lbsdec.setText("6.61");
-
-                    tv5per.setText("0.15 kgs");
-                    tv10per.setText("0.3 kgs");
-                    tv15per.setText("0.45 kgs");*/
                 }
             }
         });
@@ -165,14 +162,40 @@ public class AddWeight extends AppCompatActivity {
         return pounds;
     }
 
-    public int lbsToOz(double lbs){
-        Log.e("",""+ lbs);
-        int ounces = 1;
-        double oz = Math.ceil(lbs);
-        double extra = Math.floor(lbs);
-        ounces = (int)oz * 16;
-        ounces += extra * 0.12;
-        return ounces;
+    public double poundsToKgs(double pounds){
+        double kg = pounds / 2.20462262;
+        return kg;
+    }
+
+    public PoundsOz lbsToOz(double lbs){
+        double floor = Math.floor(lbs);
+        double leftover = lbs - floor;
+        double lbsnew = floor;
+        double ounces = leftover * 16;
+        return new PoundsOz(lbsnew, ounces);
+    }
+
+    public double lbsOzTolbsDec(PoundsOz p){
+        return (p.getPounds() + (p.getOunces()/16));
+    }
+
+    public class PoundsOz{
+
+        double pounds;
+        double ounces;
+
+        PoundsOz(double pounds, double ounces){
+            this.pounds = pounds;
+            this.ounces = ounces;
+        }
+
+        public double getOunces() {
+            return ounces;
+        }
+
+        public double getPounds() {
+            return pounds;
+        }
     }
 
 }
