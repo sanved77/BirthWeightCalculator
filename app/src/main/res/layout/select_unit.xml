@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/blue"
+    >
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:layout_centerVertical="true">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentTop="true"
+            android:paddingTop="16dp"
+            android:text="Select Unit of the Weight"
+            android:textSize="45sp"
+            android:gravity="center"
+            android:textColor="@color/white"
+            />
+
+        <Button
+            android:id="@+id/bKG"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/circle_btn"
+            android:text="KiloGrams"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:textColor="@color/black"
+            android:textSize="30sp"
+            android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/bLBS"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/circle_btn"
+            android:text="Pounds\nOunces"
+            android:textColor="@color/black"
+            android:textSize="30sp"
+            android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/bLBSD"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/circle_btn"
+            android:text="Pounds\nDecimal"
+            android:textColor="@color/black"
+            android:textSize="30sp"
+            android:textAllCaps="false" />
+
+    </LinearLayout>
+
+
+
+
+</RelativeLayout>
