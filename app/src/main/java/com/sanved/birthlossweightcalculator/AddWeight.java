@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -19,7 +20,9 @@ public class AddWeight extends AppCompatActivity {
     int unit;
     TextView tvkg,tvlbsoz,tvlbsdec,tvunit,tv5per,tv10per,tv15per;
     Button insert;
-    EditText wt;
+    EditText wt,etPounds, etOunces;
+    LinearLayout ll1;
+    double currentKg = -1, currentLbs = -1, currentOz = -1, currentLbsdec = -1;
 
     private static int MODE = 0;
     private final static int KG_MODE = 1;
@@ -86,8 +89,59 @@ public class AddWeight extends AppCompatActivity {
         tv5per = findViewById(R.id.tv5per);
         tv10per = findViewById(R.id.tv10per);
         tv15per = findViewById(R.id.tv15per);
+        ll1 = findViewById(R.id.ll1);
+        etOunces = findViewById(R.id.etOunces);
+        etPounds = findViewById(R.id.etPounds);
+
+        etPounds.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                getPercentage(s.toString(), etOunces.getText().toString());
+                convertToOthers(s.toString(), etOunces.getText().toString());
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+
+        etOunces.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                getPercentage(etPounds.getText().toString(), s.toString());
+                convertToOthers(etPounds.getText().toString(), s.toString());
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
 
         insert = findViewById(R.id.bInsert);
+        insert.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if(currentKg == -1 || currentLbs == -1 || currentOz == -1 || currentLbsdec == -1){
+                    Toast.makeText(AddWeight.this, "Please enter data first", Toast.LENGTH_SHORT).show();
+                } else {
+
+                }
+
+            }
+        });
 
         wt = findViewById(R.id.etWeight);
 
@@ -109,6 +163,33 @@ public class AddWeight extends AppCompatActivity {
             }
         });
 
+        if(MODE == KG_MODE || MODE == PODC_MODE){
+            ll1.setVisibility(View.GONE);
+            wt.setVisibility(View.VISIBLE);
+        }else{
+            ll1.setVisibility(View.VISIBLE);
+            wt.setVisibility(View.GONE);
+        }
+
+    }
+    public void convertToOthers(String pounds, String ounces) {
+        try {
+            double lbs = Double.parseDouble(pounds);
+            double oz = Double.parseDouble(ounces);
+            DecimalFormat df = new DecimalFormat();
+            df.setMaximumFractionDigits(2);
+            PoundsOz pNow = new PoundsOz(lbs, oz);
+            tvlbsoz.setText("" + pNow.getPounds() + ", " + df.format(pNow.getOunces()));
+            currentLbs = pNow.getPounds();
+            currentOz = pNow.getOunces();
+            double pDec = lbsOzTolbsDec(pNow);
+            currentLbsdec = pDec;
+            tvlbsdec.setText("" + pDec);
+            currentKg = poundsToKgs(pDec);
+            tvkg.setText(df.format(currentKg) + "");
+        }catch(NumberFormatException ne){
+            Toast.makeText(this, "Please enter proper values", Toast.LENGTH_SHORT).show();
+        }
     }
 
     public void convertToOthers(String snum){
@@ -119,27 +200,54 @@ public class AddWeight extends AppCompatActivity {
             switch(MODE){
                 case KG_MODE:
                     tvkg.setText(""+df.format(num));
+                    currentKg = num;
                     double pounds = kgToPounds(num);
+                    currentLbsdec = pounds;
                     PoundsOz p = lbsToOz(pounds);
+                    currentLbs = p.getPounds();
+                    currentOz = p.getOunces();
                     tvlbsoz.setText("" + p.getPounds() + ", " + df.format(p.getOunces()));
                     tvlbsdec.setText(df.format(pounds));
                     break;
-                case POOZ_MODE:
-//                    tv5per.setText(tv5per.getText() + " Lb/Oz");
-//                    tv10per.setText(tv10per.getText() + " Lb/Oz");
-//                    tv15per.setText(tv15per.getText() + " Lb/Oz");
-                    break;
-
                 case PODC_MODE:
-//                    tv5per.setText(tv5per.getText() + " Lb");
-//                    tv10per.setText(tv10per.getText() + " Lb");
-//                    tv15per.setText(tv15per.getText() + " Lb");
+                    tvlbsdec.setText(""+df.format(num));
+                    currentLbsdec = num;
+                    currentKg = poundsToKgs(num);
+                    tvkg.setText(""+df.format(currentKg));
+                    PoundsOz p1 = lbsToOz(num);
+                    currentLbs = p1.getPounds();
+                    currentOz = p1.getOunces();
+                    tvlbsoz.setText("" + p1.getPounds() + ", " + df.format(p1.getOunces()));
                     break;
             }
 
         }catch (NumberFormatException ne){
             Toast.makeText(this, "Please enter valid weight", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    public void getPercentage(String pounds, String ounces){
+        try{
+            double lbs = Double.parseDouble(pounds);
+            double oz = Double.parseDouble(ounces);
+            DecimalFormat df = new DecimalFormat();
+            df.setMaximumFractionDigits(2);
+            PoundsOz pNow = new PoundsOz(lbs,oz);
+            double per5 = (lbsOzTolbsDec(pNow)/100) * 5;
+            double per10 = (lbsOzTolbsDec(pNow)/100) * 10;
+            double per15 = (lbsOzTolbsDec(pNow)/100) * 15;
+            PoundsOz p5 = lbsToOz(per5);
+            PoundsOz p10 = lbsToOz(per10);
+            PoundsOz p15 = lbsToOz(per15);
+            tv5per.setText(p5.getPounds() + "lb, " + df.format(p5.getOunces()) + "oz");
+            tv10per.setText(p10.getPounds() + "lb, " + df.format(p10.getOunces()) + "oz");
+            tv15per.setText(p15.getPounds() + "lb, " + df.format(p15.getOunces()) + "oz");
+
+        }catch(NumberFormatException ne){
+            Toast.makeText(this, "Please input correct numbers", Toast.LENGTH_SHORT).show();
+        }
+
+
     }
 
     public void getPercentage(String snum){
@@ -159,11 +267,6 @@ public class AddWeight extends AppCompatActivity {
                     tv5per.setText(tv5per.getText() + " Kgs");
                     tv10per.setText(tv10per.getText() + " Kgs");
                     tv15per.setText(tv15per.getText() + " Kgs");
-                    break;
-                case POOZ_MODE:
-                    tv5per.setText(tv5per.getText() + " Lb/Oz");
-                    tv10per.setText(tv10per.getText() + " Lb/Oz");
-                    tv15per.setText(tv15per.getText() + " Lb/Oz");
                     break;
 
                 case PODC_MODE:

@@ -134,6 +134,44 @@
             android:textSize="45sp"
             />
 
+        <LinearLayout
+            android:id="@+id/ll1"
+            android:layout_width="0px"
+            android:layout_weight="5"
+            android:layout_height="match_parent">
+
+            <EditText
+                android:id="@+id/etPounds"
+                android:layout_width="0px"
+                android:layout_height="wrap_content"
+                android:layout_weight="5"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center"
+                android:text="0"
+                android:inputType="number"
+                android:textColor="@color/white"
+                android:textSize="45sp"
+                />
+
+            <EditText
+                android:id="@+id/etOunces"
+                android:layout_width="0px"
+                android:layout_height="wrap_content"
+                android:layout_weight="5"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center"
+                android:text="0"
+                android:inputType="number"
+                android:textColor="@color/white"
+                android:textSize="45sp"
+                />
+
+        </LinearLayout>
+
         <TextView
             android:id="@+id/tvUnit"
             android:layout_width="0px"
